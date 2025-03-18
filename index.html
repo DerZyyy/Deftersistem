@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kod Doğrulama</title>
+    <script>
+        function checkCode() {
+            var code = document.getElementById("codeInput").value;
+            var codes = {
+                "12345": "https://open.spotify.com/track/12345",  
+                "67890": "https://maps.google.com/?q=40.748817,-73.985428",
+                "54321": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"  
+            };
+
+            if (codes[code]) {
+                window.location.href = codes[code]; 
+            } else {
+                document.getElementById("result").innerHTML = "Yanlış kod, tekrar deneyin!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Kod Gir:</h2>
+    <input type="text" id="codeInput">
+    <button onclick="checkCode()">Onayla</button>
+    <p id="result"></p>
+</body>
+</html>
