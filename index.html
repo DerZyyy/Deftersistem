@@ -1,28 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Kod Doğrulama</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kod Sistemi</title>
+    <style>
+        /* Sayfa Arka Planı */
+        body {
+            background-color: #1b1b1b;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Giriş Alanı */
+        .input-container {
+            margin-top: 100px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            height: 40px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid #ffa500;
+            border-radius: 5px;
+            outline: none;
+            background-color: #222;
+            color: white;
+        }
+
+        /* Buton Tasarımı */
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Buton Efekti */
+        button:hover {
+            background-color: #ff7300;
+            transform: scale(1.1);
+        }
+
+        /* Hata Mesajı */
+        .error-message {
+            display: none;
+            color: red;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kodunuzu Girin</h1>
+
+    <div class="input-container">
+        <input type="text" id="codeInput" placeholder="Kodunuzu buraya girin">
+        <br>
+        <button onclick="checkCode()">GİR</button>
+        <p class="error-message" id="errorMessage">⚠ Hatalı kod girdiniz! Lütfen tekrar deneyin.</p>
+    </div>
+
     <script>
         function checkCode() {
-            var code = document.getElementById("codeInput").value;
-            var codes = {
-                "12345": "https://open.spotify.com/track/12345",  
-                "67890": "https://maps.google.com/?q=40.748817,-73.985428",
-                "54321": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"  
+            let code = document.getElementById("codeInput").value;
+
+            // Örnek kodlar
+            let codes = {
+               "12345"
+"https://youtu.be/dQw4w9WgXcQ?si=q5U92RwDEsa1YcB8",
+                "11111": "https://open.spotify.com/track/örnek2",
+                "54321": "https://open.spotify.com/track/örnek3",
+                "papatya": "https://www.google.com/search?q=papatya"
             };
 
             if (codes[code]) {
-                window.location.href = codes[code]; 
+                window.location.href = codes[code]; // Doğru kod ise yönlendir
             } else {
-                document.getElementById("result").innerHTML = "Yanlış kod, tekrar deneyin!";
+                document.getElementById("errorMessage").style.display = "block"; // Yanlışsa hata göster
             }
         }
     </script>
-</head>
-<body>
-    <h2>Kod Gir:</h2>
-    <input type="text" id="codeInput">
-    <button onclick="checkCode()">Onayla</button>
-    <p id="result"></p>
+
 </body>
 </html>
