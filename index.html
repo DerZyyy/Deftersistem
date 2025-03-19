@@ -71,11 +71,12 @@
 
     <script>
         function checkCode() {
-            let code = document.getElementById("codeInput").value.trim(); // Boşlukları sil
+            let code = document.getElementById("codeInput").value.trim(); // Boşlukları temizle
+            console.log("Girilen kod:", code); // Tarayıcı konsoluna girilen kodu yazdır
 
             // Örnek kodlar
             let codes = {
-                "24567": "https://youtu.be/CJgiwXtT0qs?si=jjoTyH7-3PFgAIED",
+                "24567": "https://youtu.be/dmJuA0pghzc?si=PxerjX7QdQxLPLyp",
                 "3169": "https://youtu.be/dmJuA0pghzc?si=PxerjX7QdQxLPLyp",
                 "12345": "https://open.spotify.com/track/12345",  
                 "67890": "https://maps.google.com/?q=40.748817,-73.985428",
@@ -83,8 +84,10 @@
             };
 
             if (codes.hasOwnProperty(code)) { // Kod doğru mu kontrol et
+                console.log("Kod bulundu, yönlendirme yapılıyor:", codes[code]);
                 window.location.href = codes[code]; // Doğru kod ise yönlendir
             } else {
+                console.log("Yanlış kod girildi!");
                 document.getElementById("errorMessage").style.display = "block"; // Yanlışsa hata göster
             }
         }
