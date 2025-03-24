@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Galerisi</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+    video {
+      border: 2px solid #ffa500;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Video Galerisi</h1>
+
+  <div class="video-container">
+    <video width="320" height="240" controls>
+      <source src="videos/video1.mp4" type="video/mp4">
+    </video>
+
+    <video width="320" height="240" controls>
+      <source src="videos/video2.mp4" type="video/mp4">
+    </video>
+
+    <!-- Diğer videoları da ekleyebilirsin -->
+  </div>
+
+</body>
+</html>
