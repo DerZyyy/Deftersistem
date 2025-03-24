@@ -2,45 +2,67 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Galerisi</title>
   <style>
     body {
-      background-color: #121212;
-      color: white;
+      background-color: #1b1b1b;
+      color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ffa500;
+    }
+    .video-container {
+      margin-bottom: 30px;
+      border: 2px solid #ffa500;
+      border-radius: 8px;
+      overflow: hidden;
     }
     video {
-      width: 90%;
-      max-width: 500px;
-      margin: 20px 0;
-      border: 2px solid #ffa500;
-      border-radius: 10px;
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
+
   <h1>Video Galerisi</h1>
 
-  <video controls>
-    <source src="Video1" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video controls>
+      <source src="Video1" type="video/mp4">
+    </video>
+  </div>
 
-  <video controls>
-    <source src="_Applejaaacck_ Rainbow dash düzenlemesi.mp4" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video controls>
+      <source src="Video2" type="video/mp4">
+    </video>
+  </div>
 
-  <video controls>
-    <source src="_HEARD OF ME_ Rainbow dash edit.mp4" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video controls>
+      <source src="Video3" type="video/mp4">
+    </video>
+  </div>
 
-  <video controls>
-    <source src="_Prankster_ Rainbow Dash edit.mp4" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video controls>
+      <source src="Video4" type="video/mp4">
+    </video>
+  </div>
 
-  <video controls>
-    <source src="_Rainbow and Dash_ Rainbow Dash düzenleme.mp4" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video controls>
+      <source src="Video5" type="video/mp4">
+    </video>
+  </div>
 
 </body>
 </html>
