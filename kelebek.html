@@ -1,52 +1,65 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kelebekler</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background-color: #000;
-    }
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    }.butterfly {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url('https://i.imgur.com/rXWGB0F.png');
+  background-size: cover;
+  animation: flap 0.3s infinite alternate ease-in-out;
+}
 
-    .butterfly {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://www.pngall.com/wp-content/uploads/14/Blue-Butterfly-PNG-Photo.png');
-      background-size: cover;
-      opacity: 0.9;
-      animation: fly 10s linear infinite;
-    }
+@keyframes flap {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
 
-    @keyframes fly {
-      0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) translateX(50vw);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
-  <script>
-    const count = 25; // Kaç kelebek uçsun
-    for (let i = 0; i < count; i++) {
-      let butterfly = document.createElement("div");
-      butterfly.className = "butterfly";
-      butterfly.style.left = Math.random() * 100 + "vw";
-      butterfly.style.animationDelay = Math.random() * 5 + "s";
-      butterfly.style.transform = `rotate(${Math.random() * 360}deg)`;
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_9c07041697.mp3?filename=soft-piano-loop-140253.mp3" type="audio/mpeg">
+  </audio>  <script>
+    const butterflies = [];
+    const numButterflies = 20;
+
+    for (let i = 0; i < numButterflies; i++) {
+      const butterfly = document.createElement('div');
+      butterfly.classList.add('butterfly');
+      butterfly.style.top = Math.random() * window.innerHeight + 'px';
+      butterfly.style.left = Math.random() * window.innerWidth + 'px';
       document.body.appendChild(butterfly);
+
+      const speedX = (Math.random() - 0.5) * 2;
+      const speedY = (Math.random() - 0.5) * 2;
+
+      butterflies.push({ el: butterfly, speedX, speedY });
     }
-  </script>
-</body>
+
+    function animate() {
+      butterflies.forEach((b) => {
+        const rect = b.el.getBoundingClientRect();
+        let newX = rect.left + b.speedX;
+        let newY = rect.top + b.speedY;
+
+        if (newX < 0 || newX > window.innerWidth - 60) b.speedX *= -1;
+        if (newY < 0 || newY > window.innerHeight - 60) b.speedY *= -1;
+
+        b.el.style.left = newX + 'px';
+        b.el.style.top = newY + 'px';
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script></body>
 </html>
