@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html><html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,31 +8,30 @@
       margin: 0;
       overflow: hidden;
       background-color: #000;
-    }
+    }.butterfly {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('https://www.pngall.com/wp-content/uploads/14/Blue-Butterfly-PNG-Photo.png');
+  background-size: cover;
+  opacity: 0.9;
+  animation: fly 10s linear infinite;
+}
 
-    .butterfly {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://www.pngall.com/wp-content/uploads/14/Blue-Butterfly-PNG-Photo.png');
-      background-size: cover;
-      opacity: 0.9;
-      animation: fly 10s linear infinite;
-    }
+@keyframes fly {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(50vw);
+    opacity: 0;
+  }
+}
 
-    @keyframes fly {
-      0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) translateX(50vw);
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 <body>
