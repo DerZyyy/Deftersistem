@@ -1,65 +1,81 @@
-<!DOCTYPE html><html lang="en">
+ <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kelebekler</title>
+  <title>Uçan Kelebekler</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-    }.butterfly {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background-image: url('https://i.imgur.com/rXWGB0F.png');
-  background-size: cover;
-  animation: flap 0.3s infinite alternate ease-in-out;
-}
+      background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    }
+    .butterfly {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1e/Butterfly_icon.svg');
+      background-size: cover;
+      animation: flutter 0.6s infinite alternate ease-in-out;
+    }
 
-@keyframes flap {
-  0% { transform: scale(1) rotate(0deg); }
-  100% { transform: scale(1.1) rotate(5deg); }
-}
-
+    @keyframes flutter {
+      0% { transform: rotate(-10deg) scale(1); }
+      100% { transform: rotate(10deg) scale(1.1); }
+    }
   </style>
 </head>
 <body>
   <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/06/audio_9c07041697.mp3?filename=soft-piano-loop-140253.mp3" type="audio/mpeg">
-  </audio>  <script>
+    <source src="https://cdn.pixabay.com/download/audio/2022/11/23/audio_ba93f19b25.mp3?filename=gentle-music-box-125669.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    const butterflyCount = 20;
     const butterflies = [];
-    const numButterflies = 20;
 
-    for (let i = 0; i < numButterflies; i++) {
-      const butterfly = document.createElement('div');
-      butterfly.classList.add('butterfly');
-      butterfly.style.top = Math.random() * window.innerHeight + 'px';
-      butterfly.style.left = Math.random() * window.innerWidth + 'px';
-      document.body.appendChild(butterfly);
-
-      const speedX = (Math.random() - 0.5) * 2;
-      const speedY = (Math.random() - 0.5) * 2;
-
-      butterflies.push({ el: butterfly, speedX, speedY });
+    for (let i = 0; i < butterflyCount; i++) {
+      const b = document.createElement("div");
+      b.classList.add("butterfly");
+      document.body.appendChild(b);
+      butterflies.push({
+        el: b,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        dx: Math.random() * 2 - 1,
+        dy: Math.random() * 2 - 1
+      });
     }
 
     function animate() {
-      butterflies.forEach((b) => {
-        const rect = b.el.getBoundingClientRect();
-        let newX = rect.left + b.speedX;
-        let newY = rect.top + b.speedY;
+      butterflies.forEach(b => {
+        b.x += b.dx;
+        b.y += b.dy;
 
-        if (newX < 0 || newX > window.innerWidth - 60) b.speedX *= -1;
-        if (newY < 0 || newY > window.innerHeight - 60) b.speedY *= -1;
+        if (b.x < 0 || b.x > window.innerWidth) b.dx *= -1;
+        if (b.y < 0 || b.y > window.innerHeight) b.dy *= -1;
 
-        b.el.style.left = newX + 'px';
-        b.el.style.top = newY + 'px';
+        b.el.style.left = b.x + "px";
+        b.el.style.top = b.y + "px";
       });
-
       requestAnimationFrame(animate);
     }
 
     animate();
-  </script></body>
+  </script>
+</body>
 </html>
+
+
+Yeni versiyonu oluşturdum! Bu sürümde:
+
+Arka plan gece gibi koyu, yumuşak geçişli.
+
+Kelebekler svg olarak net görünüyor, kanat çırpıyorlar.
+
+Rastgele yönlerde uçuyorlar ve ekran dışına çıkmıyorlar.
+
+Arka planda huzurlu bir müzik çalıyor (müzik kutusu tarzı).
+
+
+Tarayıcıda açtığında siyah kelebek ikonları rastgele uçmalı ve müzik başlamalı. Denemek istersen .html olarak kaydedip tarayıcıda açabilirsin. İstersen kelebek ikonunu ya da müziği de değiştirebiliriz. Ne dersin, oldu mu bu sefer?
+
