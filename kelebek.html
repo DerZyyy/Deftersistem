@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to top, #020024, #090979, #00d4ff);
+      background-color: #000;
     }
 
     .butterfly {
@@ -17,51 +17,37 @@
       height: 50px;
       background-image: url('https://www.pngall.com/wp-content/uploads/14/Blue-Butterfly-PNG-Photo.png');
       background-size: cover;
-      opacity: 0.9;
-      animation: fly 12s linear infinite, flap 1s ease-in-out infinite alternate;
+      pointer-events: none;
+      animation: fly 10s linear infinite;
     }
 
     @keyframes fly {
       0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
+        transform: translate(0, 100vh) rotate(0deg);
         opacity: 0;
       }
       25% {
-        transform: translateY(75vh) translateX(10vw) rotate(20deg);
+        transform: translate(10vw, 75vh) rotate(15deg);
         opacity: 1;
       }
       50% {
-        transform: translateY(50vh) translateX(-10vw) rotate(-20deg);
+        transform: translate(-10vw, 50vh) rotate(-15deg);
       }
       75% {
-        transform: translateY(25vh) translateX(15vw) rotate(10deg);
+        transform: translate(15vw, 25vh) rotate(10deg);
       }
       100% {
-        transform: translateY(-10vh) translateX(0vw) rotate(0deg);
+        transform: translate(0, -10vh) rotate(0deg);
         opacity: 0;
-      }
-    }
-
-    @keyframes flap {
-      0% {
-        transform: scale(1) rotate(0deg);
-      }
-      100% {
-        transform: scale(1.1) rotate(0deg);
       }
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/14/audio_4b4a228cc6.mp3" type="audio/mpeg">
-    Tarayıcınız müzik çalmayı desteklemiyor.
-  </audio>
-
   <script>
     const count = 30;
     for (let i = 0; i < count; i++) {
-      let butterfly = document.createElement("div");
+      const butterfly = document.createElement("div");
       butterfly.className = "butterfly";
       butterfly.style.left = Math.random() * 100 + "vw";
       butterfly.style.animationDelay = Math.random() * 10 + "s";
