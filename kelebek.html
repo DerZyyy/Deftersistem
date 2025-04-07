@@ -1,66 +1,72 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uçan Kelebekler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kelebekler</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #1a1a2e, #16213e);
-    }
-    .butterfly {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1e/Butterfly_icon.svg');
-      background-size: cover;
-      animation: flutter 0.6s infinite alternate ease-in-out;
+      background: linear-gradient(to top, #020024, #090979, #00d4ff);
     }
 
-    @keyframes flutter {
-      0% { transform: rotate(-10deg) scale(1); }
-      100% { transform: rotate(10deg) scale(1.1); }
+    .butterfly {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url('https://www.pngall.com/wp-content/uploads/14/Blue-Butterfly-PNG-Photo.png');
+      background-size: cover;
+      opacity: 0.9;
+      animation: fly 12s linear infinite, flap 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      25% {
+        transform: translateY(75vh) translateX(10vw) rotate(20deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) translateX(-10vw) rotate(-20deg);
+      }
+      75% {
+        transform: translateY(25vh) translateX(15vw) rotate(10deg);
+      }
+      100% {
+        transform: translateY(-10vh) translateX(0vw) rotate(0deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes flap {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      100% {
+        transform: scale(1.1) rotate(0deg);
+      }
     }
   </style>
 </head>
 <body>
   <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/11/23/audio_ba93f19b25.mp3?filename=gentle-music-box-125669.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2022/03/14/audio_4b4a228cc6.mp3" type="audio/mpeg">
+    Tarayıcınız müzik çalmayı desteklemiyor.
   </audio>
+
   <script>
-    const butterflyCount = 20;
-    const butterflies = [];
-
-    for (let i = 0; i < butterflyCount; i++) {
-      const b = document.createElement("div");
-      b.classList.add("butterfly");
-      document.body.appendChild(b);
-      butterflies.push({
-        el: b,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        dx: Math.random() * 2 - 1,
-        dy: Math.random() * 2 - 1
-      });
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+      let butterfly = document.createElement("div");
+      butterfly.className = "butterfly";
+      butterfly.style.left = Math.random() * 100 + "vw";
+      butterfly.style.animationDelay = Math.random() * 10 + "s";
+      document.body.appendChild(butterfly);
     }
-
-    function animate() {
-      butterflies.forEach(b => {
-        b.x += b.dx;
-        b.y += b.dy;
-
-        if (b.x < 0 || b.x > window.innerWidth) b.dx *= -1;
-        if (b.y < 0 || b.y > window.innerHeight) b.dy *= -1;
-
-        b.el.style.left = b.x + "px";
-        b.el.style.top = b.y + "px";
-      });
-      requestAnimationFrame(animate);
-    }
-
-    animate();
   </script>
 </body>
 </html>
